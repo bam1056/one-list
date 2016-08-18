@@ -4,6 +4,7 @@ import Input from './Input'
 import logo from './logo.svg'
 
 const TOKEN = 'gypsy'
+const INTERVAL = 1000
 
 class App extends Component {
 
@@ -13,12 +14,21 @@ class App extends Component {
       listItems: []
     }
   }
-  componentWillMount () {
+  getDataFromAPI = () => {
     fetch(`https://one-list-api.herokuapp.com/items?access_token=${TOKEN}`)
       .then((resp) => { return resp.json() })
       .then((data) => {
         this.setState({ listItems: data })
       })
+  }
+  componentWillMount () {
+    this.getDataFromAPI()
+    setInterval(this.getDataFromAPI, INTERVAL)
+    // fetch(`https://one-list-api.herokuapp.com/items?access_token=${TOKEN}`)
+    //   .then((resp) => { return resp.json() })
+    //   .then((data) => {
+    //     this.setState({ listItems: data })
+    //   })
   }
 
   addToList = (newListText) => {
