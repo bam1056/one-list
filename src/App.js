@@ -24,11 +24,6 @@ class App extends Component {
   componentWillMount () {
     this.getDataFromAPI()
     setInterval(this.getDataFromAPI, INTERVAL)
-    // fetch(`https://one-list-api.herokuapp.com/items?access_token=${TOKEN}`)
-    //   .then((resp) => { return resp.json() })
-    //   .then((data) => {
-    //     this.setState({ listItems: data })
-    //   })
   }
 
   addToList = (newListText) => {

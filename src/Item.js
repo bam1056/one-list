@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 
+
 class Item extends Component {
 
   doubleClicking = false
@@ -16,6 +17,13 @@ class Item extends Component {
     this.doubleClicking = true
     this.props.removeItem(this.props.index)
   }
+
+  // doubleTapHandler = () => {
+  //   this.doubleClicking = true
+  //   let hammertime = new Hammer()
+  //   hammertime.on('doubletap', this.props.removeItem(this.props.index))
+  //
+  // }
 
   render () {
     const cx = this.props.complete ? 'completed' : ''
